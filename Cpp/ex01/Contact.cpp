@@ -1,36 +1,33 @@
-#include <iostream>
-#include <string>
+#include "Contact.hpp"
 
-class Contact
-{
-    std::string darkest_secre;
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    int k;
-    public:
-    int lol(){
-        return k;
-    }
-    void setters(int value)
-    {
-        if(value >= 10)
-        {
-            std::cout << "cant get it more then 10" << std::endl;
-            return ;
-        }
-        else
-            this->k = value;
-    }
-};
+std::string Contact::GetPhoneNumber(){return (phone_number);}
+std::string Contact::GetFirstname(){return (first_name);}
+std::string Contact::GetLastName(){return (last_name);}
+std::string Contact::GetNickname(){return (nickname);}
+std::string Contact::GetDarkestSecret(){return (darkest_secret);}
 
-int main()
+
+void Contact::Set_phoneNumber(std::string value)
 {
-    Contact tt;
-    // tt.lol = "lol";
-    tt.setters(10);
-    std::cout << tt.lol() << std::endl;
-    tt.setters(3);
-    std::cout << tt.lol() << std::endl;
+    this->phone_number = value;
+}
+
+void Contact::Set_FirstName(std::string value)
+{
+    this->first_name = value;
+}
+
+void Contact::Set_Last_Name(std::string value)
+{
+    this->last_name = value;
+}
+
+void Contact::Set_Nickname(std::string value)
+{
+    this->nickname = value;
+}
+
+void Contact::Set_DarkestSecret(std::string value)
+{
+    this->darkest_secret = value;
 }
