@@ -2,7 +2,7 @@ NAME = megaphone
 
 CPP = c++
 
-SRC = Contact.cpp \
+SRC = Contact.cpp main.cpp PhoneBook.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 

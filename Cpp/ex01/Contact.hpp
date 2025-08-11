@@ -2,7 +2,7 @@
 #define CONTACT_H
 
 #include <string>
-#include <iostream>+
+#include <iostream>
 
 class Contact
 {
@@ -17,7 +17,6 @@ public:
     std::string GetNickname();
     std::string GetPhoneNumber();
     std::string GetDarkestSecret();
-
     void Set_phoneNumber(std::string value);
     void Set_FirstName(std::string value);
     void Set_Nickname(std::string value);
