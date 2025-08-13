@@ -1,6 +1,7 @@
 #include "PhoneBook.hpp"
 
 Contact contact;
+PhoneBook phonebook;
 
 void displayError(const std::string& message)
 {
@@ -36,41 +37,44 @@ void e_xit(){exit(1);}
 
 void search()
 {
-    
+    phonebook.search();
 }
 
 void add(int i)
 {
     std::string input;
-    PhoneBook	phonebook;
-    if(i == 7)
-        i = 0;
-    std::cout << "Enter your First Name !" << "\n";
+    std::cout << "Enter your First Name !" << '\n';
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_FirstName(input);
-    std::cout << "Enter your Last Name !" << "\n";
+    std::cout << "Enter your Last Name !" << '\n';
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_Last_Name(input);
-    std::cout << "Enter your Nickname !" << "\n";
+    std::cout << "Enter your Nickname !" << '\n';
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_Nickname(input);
-    std::cout << "Enter your Number !" << "\n";
+    std::cout << "Enter your Number !" << '\n';
     if((!std::getline(std::cin,input)))
         exit(1);
     while(isValidPhoneNumber(input) == false)
     {
         displayError("Invalid number");
-        std::cout << "Please re enter the Phone Number" << "\n";
+        std::cout << "Please re enter the Phone Number" << '\n';
         if((!std::getline(std::cin,input)))
             exit(1);
     }
     contact.Set_phoneNumber(input);
+    std::cout <<"Enter the Darkest Secret !" << '\n';
+    if((!std::getline(std::cin,input)))
+        exit(1);
+    contact.Set_DarkestSecret(input);
+    phonebook.set_contact(contact, i);
+    std::cout << "Contact added successfully!" << '\n';
 }
 
-int inp_treater(std::string input, int i)
+int inp_treater(std::string input, int& i)
 {
     if(input == "EXIT"){
             e_xit();
@@ -82,6 +86,7 @@ int inp_treater(std::string input, int i)
     }
     else if(input == "ADD"){
         add(i);
+        i = (i + 1) % 8;
         return 1;
     }
     return -1;
