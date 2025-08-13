@@ -3,12 +3,12 @@
 
 #include "Contact.hpp"
 #include <iostream>
+#include <limits>
 
 class	PhoneBook
 {
 	Contact contact[8];
 	void	print_contact(int i);
-public:
 public:
     std::string get_first_name(int i);
     std::string get_last_name(int i);

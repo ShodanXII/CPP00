@@ -3,11 +3,6 @@
 Contact contact;
 PhoneBook phonebook;
 
-void displayError(const std::string& message)
-{
-    std::cout << "Error: " << message << '\n';
-}
-
 bool isValidPhoneNumber(const std::string& number)
 {
     if (number.empty())
@@ -18,6 +13,11 @@ bool isValidPhoneNumber(const std::string& number)
             return false;
     }
     return true;
+}
+
+void displayError(const std::string& message)
+{
+    std::cout << "Error: " << message << '\n';
 }
 
 bool isEmptyOrWhitespace(const std::string& str)
@@ -35,6 +35,23 @@ bool isEmptyOrWhitespace(const std::string& str)
 
 void e_xit(){exit(1);}
 
+std::string getNonEmptyInput(const std::string& prompt)
+{
+    std::string input;
+    while (true)
+    {
+        std::cout << prompt << '\n';
+        if (!std::getline(std::cin, input))
+            exit(1);
+        if (isEmptyOrWhitespace(input))
+        {
+            displayError("Input cannot be empty or only whitespace.");
+            continue;
+        }
+        return input;
+    }
+}
+
 void search()
 {
     phonebook.search();
@@ -42,34 +59,20 @@ void search()
 
 void add(int i)
 {
-    std::string input;
-    std::cout << "Enter your First Name !" << '\n';
-    if(!(std::getline(std::cin, input)))
-        exit (1);
-    contact.Set_FirstName(input);
-    std::cout << "Enter your Last Name !" << '\n';
-    if(!(std::getline(std::cin, input)))
-        exit (1);
-    contact.Set_Last_Name(input);
-    std::cout << "Enter your Nickname !" << '\n';
-    if(!(std::getline(std::cin, input)))
-        exit (1);
-    contact.Set_Nickname(input);
-    std::cout << "Enter your Number !" << '\n';
-    if((!std::getline(std::cin,input)))
-        exit(1);
-    while(isValidPhoneNumber(input) == false)
+    contact.Set_FirstName(getNonEmptyInput("Enter your First Name!"));
+    contact.Set_Last_Name(getNonEmptyInput("Enter your Last Name!"));
+    contact.Set_Nickname(getNonEmptyInput("Enter your Nickname!"));
+
+    std::string number;
+    while (true)
     {
-        displayError("Invalid number");
-        std::cout << "Please re enter the Phone Number" << '\n';
-        if((!std::getline(std::cin,input)))
-            exit(1);
+        number = getNonEmptyInput("Enter your Number!");
+        if (isValidPhoneNumber(number))
+            break;
+        displayError("Invalid number. Please enter digits only.");
     }
-    contact.Set_phoneNumber(input);
-    std::cout <<"Enter the Darkest Secret !" << '\n';
-    if((!std::getline(std::cin,input)))
-        exit(1);
-    contact.Set_DarkestSecret(input);
+    contact.Set_phoneNumber(number);
+    contact.Set_DarkestSecret(getNonEmptyInput("Enter the Darkest Secret!"));
     phonebook.set_contact(contact, i);
     std::cout << "Contact added successfully!" << '\n';
 }
@@ -94,7 +97,6 @@ int inp_treater(std::string input, int& i)
 
 int main()
 {
-    Contact Contact;
     std::string input;
     int i = 0;
     while(25)
