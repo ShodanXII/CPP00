@@ -4,14 +4,13 @@ Contact contact;
 
 void displayError(const std::string& message)
 {
-    std::cout << "Error: " << message << std::endl;
+    std::cout << "Error: " << message << '\n';
 }
 
 bool isValidPhoneNumber(const std::string& number)
 {
     if (number.empty())
         return false;
-    
     for (size_t i = 0; i < number.length(); i++)
     {
         if (!isdigit(number[i]))
@@ -37,7 +36,7 @@ void e_xit(){exit(1);}
 
 void search()
 {
-
+    
 }
 
 void add(int i)
@@ -61,7 +60,8 @@ void add(int i)
     std::cout << "Enter your Number !" << std::endl;
     if((!std::getline(std::cin,input)))
         exit(1);
-    valid_number(input);
+    if(isValidPhoneNumber(input) == false)
+        displayError("Invalid number");
     contact.Set_phoneNumber(input);
 }
 
