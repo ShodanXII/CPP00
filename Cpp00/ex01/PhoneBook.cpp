@@ -54,3 +54,46 @@ void	PhoneBook::search()
 		print_contact(index);
 	}
 }
+
+std::string PhoneBook::get_first_name(int i)
+{
+    return contact[i].GetFirstname();
+}
+
+std::string PhoneBook::get_last_name(int i)
+{
+    return contact[i].GetLastName();
+}
+
+std::string PhoneBook::get_nickname(int i)
+{
+    return contact[i].GetNickname();
+}
+
+std::string PhoneBook::get_phone_number(int i)
+{
+    return contact[i].GetPhoneNumber();
+}
+
+std::string PhoneBook::get_darkest_secret(int i)
+{
+    return contact[i].GetDarkestSecret();
+}
+
+void PhoneBook::set_contact(Contact new_contact, int i)
+{
+    contact[i] = new_contact;
+}
+
+std::string PhoneBook::align_col(std::string str)
+{
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    else
+    {
+        std::string aligned = str;
+        while (aligned.length() < 10)
+            aligned = " " + aligned;
+        return aligned;
+    }
+}

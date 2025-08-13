@@ -45,23 +45,28 @@ void add(int i)
     PhoneBook	phonebook;
     if(i == 7)
         i = 0;
-    std::cout << "Enter your First Name !" << std::endl;
+    std::cout << "Enter your First Name !" << "\n";
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_FirstName(input);
-    std::cout << "Enter your Last Name !" << std::endl;
+    std::cout << "Enter your Last Name !" << "\n";
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_Last_Name(input);
-    std::cout << "Enter your Nickname !" << std::endl;
+    std::cout << "Enter your Nickname !" << "\n";
     if(!(std::getline(std::cin, input)))
         exit (1);
     contact.Set_Nickname(input);
-    std::cout << "Enter your Number !" << std::endl;
+    std::cout << "Enter your Number !" << "\n";
     if((!std::getline(std::cin,input)))
         exit(1);
-    if(isValidPhoneNumber(input) == false)
+    while(isValidPhoneNumber(input) == false)
+    {
         displayError("Invalid number");
+        std::cout << "Please re enter the Phone Number" << "\n";
+        if((!std::getline(std::cin,input)))
+            exit(1);
+    }
     contact.Set_phoneNumber(input);
 }
 
@@ -89,7 +94,7 @@ int main()
     int i = 0;
     while(25)
     {
-        std::cout << "ENTER ONE OF THIS COMMANDS (ADD, SEARCH, EXIT)!" << std::endl;
+        std::cout << "ENTER ONE OF THIS COMMANDS (ADD, SEARCH, EXIT)!" << "\n";
         if(!(std::getline(std::cin,input)))
             exit(1);
         if(inp_treater(input, i) == -1)
