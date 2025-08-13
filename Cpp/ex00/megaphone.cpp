@@ -14,16 +14,18 @@ void print(char c)
 int main(int ac, char **av)
 {
     int j;
+    std::string string;
     if(ac < 2){
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
         return 0;
     }
-    for (int i = 1; av[i]; i++)
+    for (int i = 1; i < ac; i++)
     {
+        string = av[i];
         j = 0;
-        while (av[i][j])
+        while (string[j])
         {
-            print(av[i][j]);
+            print(string[j]);
             j++;
         }
     }
