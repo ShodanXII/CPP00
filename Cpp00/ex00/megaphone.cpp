@@ -5,7 +5,7 @@ void print(char c)
 {
     if (isalpha(c)) {
         
-        std::cout << std::toupper(c);
+        std::cout << (char )toupper(c);
     } else {
         std::cout << c;
     }

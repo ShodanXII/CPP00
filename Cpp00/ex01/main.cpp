@@ -94,7 +94,7 @@ int inp_treater(std::string input, int& i)
     }
     return -1;
 }
-
+q
 int main()
 {
     std::string input;
