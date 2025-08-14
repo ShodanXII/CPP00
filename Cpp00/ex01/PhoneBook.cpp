@@ -85,7 +85,7 @@ void PhoneBook::set_contact(Contact new_contact, int i)
 	contact[i] = new_contact;
 }
 
-std::string PhoneBook::align_col_sprintf(std::string str)  // Add "PhoneBook::"
+std::string PhoneBook::align_col_sprintf(std::string str)
 {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
