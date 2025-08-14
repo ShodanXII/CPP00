@@ -16,16 +16,16 @@ void	PhoneBook::search()
 
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
     std::cout << "|     index|first name|  lastname|  nickname|" << std::endl;
-    std::cout << "+----------+----------+----------+----------+" << std::endl;
+    std::cout << "+----------+----------+-----	-----+----------+" << std::endl;
 	count = 0;
 	for(int i = 0; i < 8; i++)
 	{
 		if (!get_first_name(i).empty())
 		{
 			std::cout << "|         " << i << "|";
-			std::cout << align_col(get_first_name(i)) << "|";
-			std::cout << align_col(get_last_name(i)) << "|";
-			std::cout << align_col(get_nickname(i)) << "|" << std::endl;
+			std::cout << align_col_sprintf(get_first_name(i)) << "|";
+			std::cout << align_col_sprintf(get_last_name(i)) << "|";
+			std::cout << align_col_sprintf(get_nickname(i)) << "|" << std::endl;
 			count++;
 		}
 	}
@@ -82,18 +82,15 @@ std::string PhoneBook::get_darkest_secret(int i)
 
 void PhoneBook::set_contact(Contact new_contact, int i)
 {
-    contact[i] = new_contact;
+	contact[i] = new_contact;
 }
 
-std::string PhoneBook::align_col(std::string str)
+std::string PhoneBook::align_col_sprintf(std::string str)  // Add "PhoneBook::"
 {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
-    else
-    {
-        std::string aligned = str;
-        while (aligned.length() < 10)
-            aligned = " " + aligned;
-        return aligned;
-    }
+    
+    char buffer[11];
+    sprintf(buffer, "%10s", str.c_str());
+    return std::string(buffer);
 }
