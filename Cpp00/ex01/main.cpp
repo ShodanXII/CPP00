@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <cstdlib>
 
 Contact contact;
 PhoneBook phonebook;
