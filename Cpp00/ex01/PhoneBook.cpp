@@ -91,6 +91,6 @@ std::string PhoneBook::align_col_sprintf(std::string str)
         return str.substr(0, 9) + ".";
     
     char buffer[11];
-    sprintf(buffer, "%10s", str.c_str());
+    std::cin << str;
     return std::string(buffer);
 }
